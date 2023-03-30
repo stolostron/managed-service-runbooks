@@ -1,15 +1,26 @@
 # ACM Foundation SOPs for SD
 
-## ManagedCluster
-- [Cluster importing is not finished in 10 minutes](./alerts/manaegdcluster.md#cluster-importing-is-not-finished-in-10-minutes)
-- [Managed cluster keeps unreachable for 10 minutes](./alerts/manaegdcluster.md#managed-cluster-keeps-unreachable-for-10-minutes)
-- [Kube-apiserver of managed cluster keeps unavailable for 10 minutes](./alerts/manaegdcluster.md#kube-apiserver-of-managed-cluster-keeps-unavailable-for-10-minutes)
-- [Rotation of managed cluster client cert keeps failed in 24 hours](./alerts/manaegdcluster.md#rotation-of-managed-cluster-client-cert-keeps-failed-in-24-hours)
+There are several critical informations you need to get before you start troubleshooting, and they can be found in alerts' annotation -- `description`.
+* managedcluster_name
+* manifestwork_name(only needed when handling a manifestwork alert.)
 
-## ManagedClusterAddon
-- [Work manager keeps unavailable for 10 minutes](./alerts/managedclusteraddon.md#work-manager-keeps-unavailable-for-10-minutes)
+Another useful annotation is `dashboard`, it contains the url of the dashboard which can help you to find more information about the alert.
+
+The you need to use input the `managed_cluster_name` as the dashboard variable `managedcluster` and check the `ManagedCluster Finder` row.
+
+Then you can find serveral information about this managed cluster in that row:
+* **ClusterType**: Whether it's a management cluster or a host cluster.
+* **HubClusterID**: The hub cluster ID of this managed cluster.
+* **HostedClusters**: If it's a management cluster, then in this table will list all hosted clusters on it.
+* **ManagedClusterLabels**:
+    * if it's a management cluster, we can get ths osd cluster status and addons status of it.
+    * **if it's a hosted cluster, we can get the `management_cluster_name` and the `hosted_cluster_namespace` of it.**
+
+## ManagedCluster
+- [ManagedClusterConditionUnknown](./alerts/manaegdcluster.md#managedclusterconditionunknown)
+- [ManagedClusterKubeAPIServerUnavailable](./alerts/manaegdcluster.md#managedclusterkubeapiserverunavailable)
+- [ManagedClusterClientCertRotationFailed](./alerts/manaegdcluster.md#managedclusterclientcertrotationfailed)
 
 ## ManifestWork
 
-- [ManifestWork keeps unprocessed for 10 minutes](./alerts/manifestwork.md#manifestwork-keeps-unprocessed-for-10-minutes)
-- [The apply of ManifestWork keeps failed for 5 minutes](./alerts/manifestwork.md#the-apply-of-manifestwork-keeps-failed-for-5-minutes)
+- [ManifestWorkApplyFailed](./alerts/manifestwork.md#manifestworkapplyfailed)
