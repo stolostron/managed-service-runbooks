@@ -51,3 +51,6 @@ Also, when the hypershift-addon agent restarts.
 | **Missing API service** | Returns error and retries | Increments failure counter |
 | **Kubeconfig parsing failure** | Logs error and fails | Increments failure counter |
 
+## Flow
+
+<img width="1018" height="1179" alt="image" src="https://github.com/user-attachments/assets/a4168d61-db2b-467f-80b1-38421b79c171" />
