@@ -1,10 +1,10 @@
-#Hosted Cluster Registration with ACM
+# Hosted Cluster Registration with ACM
 
 To manage a hosted cluster using ACM's tools (like policies), it needs to be registered with the ACM hub. This registration happens when the Cluster Service controller creates a ManagedCluster resource. In a managed service environment, this specific ManagedCluster resource triggers the installation of the klusterlet agent and other necessary agents (like policy add-on agents) within the klusterlet-managedClusterName namespace on the management cluster. These agents then connect and interact with the hosted cluster's Kubernetes API server to perform the management tasks delegated by the ACM hub.
 
 The hypershift-addon agent, also running in the management cluster, monitors these hosted clusters. Once a hosted cluster becomes available, this agent generates the external-managed-kubeconfig secret based on the hosted cluster's admin kubeconfig . This secret is stored in the klusterlet namespace, enabling the klusterlet and other add-on agents to begin managing the hosted cluster.
 
-##External-Managed-Kubeconfig Secret Creation Process
+## External-Managed-Kubeconfig Secret Creation Process
 
 ### 1. Trigger Conditions
 
