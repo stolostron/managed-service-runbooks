@@ -51,6 +51,22 @@ Also, when the hypershift-addon agent restarts.
 | **Missing API service** | Returns error and retries | Increments failure counter |
 | **Kubeconfig parsing failure** | Logs error and fails | Increments failure counter |
 
+### Debug Commands
+
+```bash
+# Check if secret exists
+kubectl get secret external-managed-kubeconfig -n klusterlet-<cluster-name>
+
+# Verify kubeconfig content
+kubectl get secret external-managed-kubeconfig -n klusterlet-<cluster-name> -o yaml
+
+# Test internal DNS resolution
+nslookup kube-apiserver.<namespace>-<cluster-name>.svc.cluster.local
+
+# Check agent logs
+kubectl logs -l name=hypershift-addon-agent -n open-cluster-management-agent-addon
+```
+
 ## Flow
 
 <img width="1018" height="1179" alt="image" src="https://github.com/user-attachments/assets/a4168d61-db2b-467f-80b1-38421b79c171" />
